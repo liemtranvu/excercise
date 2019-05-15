@@ -3,7 +3,10 @@
 - maven
 
 ## How to run test
-- use maven to generate testing report in $PROJECT_BASE/target/surefire/reports
+- use maven to generate testing report : 
+
+    * $PROJECT_BASE/target/surefire/reports : unit test report
+    * $PROJECT_BASE/target/site/jacoco : testing coverage
 ```
 mvn verify
 ```
