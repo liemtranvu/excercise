@@ -2,6 +2,7 @@ package test3.model;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Cart {
@@ -24,5 +25,13 @@ public class Cart {
 
     public boolean addProduct(Product product) {
         return productList.add(product);
+    }
+
+    @Override
+    public String toString() {
+        return "Cart{" +
+                "customer=" + customer.toString() +
+                ", productList=" + Arrays.toString(productList.toArray()) +
+                '}';
     }
 }

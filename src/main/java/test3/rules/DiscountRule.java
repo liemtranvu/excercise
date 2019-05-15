@@ -14,10 +14,11 @@ public abstract class DiscountRule {
 
     public BigDecimal calculateBilling(final Cart cart, final BigDecimal total){
         BigDecimal discount = calculate(cart, total);
+        BigDecimal billing = total.subtract(discount);
         if(successor != null) {
-            discount = this.successor.calculate(cart, total.subtract(discount));
+            return this.successor.calculateBilling(cart, billing);
         }
-        return total.subtract(discount);
+        return billing;
     }
 
     protected abstract BigDecimal calculate(final Cart cart, final BigDecimal total);

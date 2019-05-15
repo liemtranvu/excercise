@@ -20,6 +20,6 @@ public class AmountDiscount extends DiscountRule {
 
     @Override
     protected BigDecimal calculate(final Cart cart, final BigDecimal total) {
-        return total.divide(BigDecimal.valueOf(100), BigDecimal.ROUND_DOWN).multiply(discountPer100USD);
+        return total.divide(BigDecimal.valueOf(100)).setScale(0, BigDecimal.ROUND_DOWN).multiply(discountPer100USD);
     }
 }

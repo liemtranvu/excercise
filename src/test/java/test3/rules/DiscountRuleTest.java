@@ -15,7 +15,7 @@ import static org.mockito.Mockito.*;
 public class DiscountRuleTest {
 
     @Test
-    public void shouldCallSuccessorOnRuleChainWithTotalSubtractCalculatedCount() {
+    public void shouldCallSuccessorOnRuleChainWithTotalSubtractCalculatedDiscount() {
         DiscountRule amountRule = new AmountDiscount();
         DiscountRule mockRule = mock(DiscountRule.class);
         BigDecimal total = BigDecimal.valueOf(100);
@@ -27,8 +27,7 @@ public class DiscountRuleTest {
         when(mockRule.calculate(cart, total.subtract(discount))).thenReturn(mockDiscount);
         amountRule.calculateBilling(cart, total);
 
-        Mockito.verify(mockRule, Mockito.times(1)).calculate(eq(cart), any(BigDecimal.class));
-        Mockito.verifyNoMoreInteractions(mockRule);
+        Mockito.verify(mockRule, Mockito.times(1)).calculateBilling(cart, total.subtract(discount));
     }
 
 }

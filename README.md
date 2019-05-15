@@ -11,6 +11,17 @@
 mvn verify
 ```
 
+## How to run it
+- use maven to generate jar : 
+```
+mvn clean package
+```
+
+- execute generated jar : 
+```
+java -jar target/excercise-1.0-SNAPSHOT.jar
+```
+
 
 ## Time and memory complexity analysis
 ### Exercise 1:

@@ -32,6 +32,36 @@ public class PercentageDiscountTest {
     }
 
     @Test
+    public void shouldApply30PercentForStaff() {
+        Customer customer = new Customer("mr.staff", true, false,1);
+        double expected = PercentageDiscount.DEFAULT_FOR_STAFF;
+
+        double percent = underTest.selectPercent(customer);
+
+        assertEquals("should select 30%", expected, percent, 0.01);
+    }
+
+    @Test
+    public void shouldApply10PercentForAffiliate() {
+        Customer customer = new Customer("mr.staff", false, true,1);
+        double expected = PercentageDiscount.DEFAULT_FOR_INFILIATE;
+
+        double percent = underTest.selectPercent(customer);
+
+        assertEquals("should select 10%", expected, percent, 0.01);
+    }
+
+    @Test
+    public void shouldApply5PercentForLoyalty() {
+        Customer customer = new Customer("mr.staff", false, false,3);
+        double expected = PercentageDiscount.DEFAULT_FOR_LOYALTY_OVER_2_YEAR;
+
+        double percent = underTest.selectPercent(customer);
+
+        assertEquals("should select 10%", expected, percent, 0.01);
+    }
+
+    @Test
     public void shouldExcludeGroceryItems() {
         BigDecimal groceryItemPrice = new BigDecimal(5);
         BigDecimal notGroceryItemPrice = new BigDecimal(10);
@@ -45,4 +75,6 @@ public class PercentageDiscountTest {
 
         assertEquals("should exclude grocery items when calculate discount"  , expected, discount);
     }
+
+
 }

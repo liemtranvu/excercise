@@ -29,4 +29,14 @@ public class Customer {
     public int getYearOfLoyalty() {
         return yearOfLoyalty;
     }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "name='" + name + '\'' +
+                ", staff=" + staff +
+                ", affiliate=" + affiliate +
+                ", yearOfLoyalty=" + yearOfLoyalty +
+                '}';
+    }
 }
