@@ -12,6 +12,10 @@ public abstract class DiscountRule {
         this.successor = successor;
     }
 
+    public DiscountRule getSuccessor() {
+        return successor;
+    }
+
     public BigDecimal calculateBilling(final Cart cart, final BigDecimal total){
         BigDecimal discount = calculate(cart, total);
         BigDecimal billing = total.subtract(discount);

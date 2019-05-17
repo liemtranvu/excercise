@@ -25,6 +25,10 @@ public class Counter {
         this.discountRule = percentDiscount;
     }
 
+    public DiscountRule getDiscountRule() {
+        return discountRule;
+    }
+
     public BigDecimal checkout(Cart cart) {
         BigDecimal total = new BigDecimal(0);
 

@@ -5,7 +5,9 @@ import org.junit.Test;
 import org.mockito.Mockito;
 import test3.model.Cart;
 import test3.model.Product;
+import test3.rules.AmountDiscount;
 import test3.rules.DiscountRule;
+import test3.rules.PercentageDiscount;
 import utils.MockData;
 
 import java.math.BigDecimal;
@@ -13,6 +15,15 @@ import java.math.BigDecimal;
 import static org.junit.Assert.*;
 
 public class CounterTest {
+
+    @Test
+    public void shouldIncludePercentageAndAmountRuleOnDefaultCounter() {
+        Counter underTest = new Counter();
+        DiscountRule discountRule = underTest.getDiscountRule();
+
+        assertTrue("first rule should be percentage discount rule", discountRule instanceof PercentageDiscount);
+        assertTrue("second rule should be amount discount rule", discountRule.getSuccessor() instanceof AmountDiscount);
+    }
 
     @Test
     public void shouldCalculateBillWithSumOfProductsPrice() {
