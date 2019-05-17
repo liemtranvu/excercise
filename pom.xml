@@ -64,6 +64,9 @@
                 <configuration>
                     <output>file</output>
                     <append>true</append>
+                    <excludes>
+                        <exclude>**/*ExcerciseRunner.*</exclude>
+                    </excludes>
                 </configuration>
                 <executions>
                     <execution>
